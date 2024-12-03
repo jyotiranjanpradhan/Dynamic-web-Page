@@ -1,0 +1,66 @@
+import React, { useState } from "react";
+import PageEditor from "./pages/PageEditor";
+import PageViewer from "./pages/PageViewer";
+
+const App = () => {
+  const [pages, setPages] = useState([]);
+  const [activePageId, setActivePageId] = useState(null);
+
+  const createNewPage = () => {
+    const newPage = {
+      id: Date.now(),
+      name: `Page ${pages.length + 1}`,
+      components: [],
+    };
+    setPages([...pages, newPage]);
+    setActivePageId(newPage.id);
+  };
+
+  const addComponentToPage = (type) => {
+    const updatedPages = pages.map((page) =>
+      page.id === activePageId
+        ? {
+            ...page,
+            components: [
+              ...page.components,
+              { type, left: 10, top: 10, data: {} }, // Initial position
+            ],
+          }
+        : page
+    );
+    setPages(updatedPages);
+  };
+
+  const updateComponentPosition = (id, left, top) => {
+    const updatedPages = pages.map((page) =>
+      page.id === activePageId
+        ? {
+            ...page,
+            components: page.components.map((component, index) =>
+              index === id ? { ...component, left, top } : component
+            ),
+          }
+        : page
+    );
+    setPages(updatedPages);
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>Dynamic Page Builder</h1>
+      <button onClick={createNewPage}>Add Page</button>
+      <button onClick={() => addComponentToPage("navbar")}>Add Navbar</button>
+      <button onClick={() => addComponentToPage("text")}>Add Text</button>
+      <div style={{ marginTop: "20px" }}>
+        <PageEditor pages={pages} activePageId={activePageId} />
+        <PageViewer
+          pages={pages}
+          activePageId={activePageId}
+          updateComponentPosition={updateComponentPosition}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default App;
