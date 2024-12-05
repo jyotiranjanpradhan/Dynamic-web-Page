@@ -27,8 +27,8 @@ const App = () => {
     };
     setPages([...pages, newPage]);
     setActivePageId(newPage.id);
-    setNewPageName(""); // Reset input field
-    setIsModalOpen(false); // Close modal
+    setNewPageName(""); 
+    setIsModalOpen(false); 
   };
 
   const saveToBackend = async () => {

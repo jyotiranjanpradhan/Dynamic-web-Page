@@ -24,9 +24,9 @@ const SavedPages = () => {
       <h2>Saved Pages</h2>
       {savedPages.map((pageGroup) =>
         pageGroup.data.map((page) => (
-          <div key={page.id} style={{ margin: "10px 0" }}>
-            <h3>{page.name}</h3>
-            <Link to={`/saved-pages/${page.id}`}>View Page</Link>
+          <div key={page?.id} style={{ margin: "10px 0" }}>
+            <h3>{page?.name}</h3>
+            <Link to={`/saved-pages/${page?.id}`}>View Page</Link>
           </div>
         )) 
       )}

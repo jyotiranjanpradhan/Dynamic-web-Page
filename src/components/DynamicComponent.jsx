@@ -13,8 +13,8 @@ const DynamicComponent = ({ type, data }) => {
         <div
           style={{
             width: "100%",
-            maxWidth: "500px", // Limit max width
-            margin: "0 auto", // Center the image
+            maxWidth: "500px", 
+            margin: "0 auto", 
             borderRadius: "8px",
             overflow: "hidden",
           }}
@@ -24,7 +24,7 @@ const DynamicComponent = ({ type, data }) => {
             alt={data.alt || "Dynamic Image"}
             style={{
               width: "100%",
-              height: "auto", // Maintain aspect ratio
+              height: "auto", 
               borderRadius: "8px",
             }}
           />

@@ -5,7 +5,7 @@ const Navbar = ({ navItems = [], navTitle = "Navbar" }) => {
   return (
     <nav
       style={{
-        width: "100vw",
+        width: "1150px",
         padding: "15px 30px",
         backgroundColor: "#007BFF",
         display: "flex",
